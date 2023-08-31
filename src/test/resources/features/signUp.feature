@@ -3,10 +3,15 @@ Feature: Sign Up di web Luma
     Given Buka browser
     * Buka web Luma
     * Buka halaman sign up
-    * User memasukkan "first name" dengan "Reka"
-    * User memasukkan "last name" dengan "Raki"
-    * User memasukkan "email" dengan "raki@mail.com"
-    * User memasukkan "password" dengan "r19SWmA839hjemT"
-    * User memasukkan "confirm password" dengan "r19SWmA839hjemT"
+    * User memasukkan "first name" dengan "<first name>"
+    * User memasukkan "last name" dengan "<last name>"
+    * User memasukkan "email" dengan "<email>"
+    * User memasukkan "password" dengan "<password>"
+    * User memasukkan "confirm password" dengan "<confirm password>"
     * User klik tombol "create an account"
-#    Then Url sesuai dengan yang dibuka
+    Then Lihat alert
+
+  Examples:
+    | first name | last name | email         | password  | confirm password |
+    | Reka       | Raki      | raki@mail.con | okP0219!a | okP0219!a        |
+    | Andi       | Hazz      | hazz@mail.com | a1cab2f5@ | a1cab2f5@        |
