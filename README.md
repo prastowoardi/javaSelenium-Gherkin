@@ -12,7 +12,8 @@
 
 **Langkah untuk setting :**
 
-- Buka pom.xml dan add dependency ini
+- Buka pom.xml dan add dependency seperti dibawah
+- Jika ingin menambahkan dependencies lain bisa cari <a href=https://mvnrepository.com> di sini </a>
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <project xmlns="http://maven.apache.org/POM/4.0.0"
