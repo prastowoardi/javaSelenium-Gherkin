@@ -1,8 +1,11 @@
 Feature: Sign Up di web Luma
-  Scenario:  Sign up / register akun baru
+
+  Background:
     Given Buka browser
     * Buka web Luma
-    * Buka halaman sign up
+    * Buka halaman "sign up"
+
+  Scenario:  Sign up / register akun baru
     * User memasukkan "first name" dengan "<first name>"
     * User memasukkan "last name" dengan "<last name>"
     * User memasukkan "email" dengan "<email>"
