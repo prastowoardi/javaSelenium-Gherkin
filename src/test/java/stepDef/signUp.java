@@ -21,7 +21,7 @@ public class signUp {
     public void bukaBrowser() {
         final String dir = System.getProperty("user.dir");
         System.out.println("current dir = " + dir);
-        System.setProperty("webdriver.chrome.driver", dir+"/driver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", dir+"/driver/chromedriver");
         driver = new ChromeDriver();
         // Set ukuran layar browser
         Dimension screenSize = new Dimension(1440, 1024); // Ganti sesuai kebutuhan
