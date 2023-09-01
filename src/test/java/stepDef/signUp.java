@@ -8,6 +8,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,13 +76,28 @@ public class signUp {
 
     @Then("Lihat alert")
     public void lihatAlert() {
-        if (fn == "Reka") {
-            driver.findElement(By.cssSelector(".message-error > div"));
-            System.out.println("There is already an account with this email address. If you are sure that it is your email address");
+        String errorMessage = getMessage(driver, ".message-error > div");
+        String successMessage = getMessage(driver, ".message-success > div");
+
+        if (errorMessage != null) {
+            System.out.println("Error Message: " + errorMessage);
+            driver.quit();
+        } else if (successMessage != null) {
+            System.out.println("Success Message: " + successMessage);
             driver.quit();
         } else {
-            driver.findElement(By.cssSelector(".message-success > div"));
-            System.out.println("Thank you for registering with Main Website Store.");
+            System.out.println("No message found.");
+        }
+    }
+
+    // Function untuk ambil text dari message yang muncul
+    public static String getMessage(WebDriver driver, String selector) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
+            return messageElement.getText();
+        } catch (Exception e) {
+            return null;
         }
     }
 }

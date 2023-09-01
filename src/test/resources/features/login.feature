@@ -9,5 +9,5 @@ Feature: User login ke web Luma
     When User memasukkan "emailLogin" dengan "hazz@mail.com"
     * User memasukkan "passLogin" dengan "a1cab2f5@"
     * User klik tombol "Sign In"
-    
-    
+    * Cek apakah user sudah login
+
