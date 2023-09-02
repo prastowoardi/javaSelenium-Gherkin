@@ -39,16 +39,6 @@ public class signUp {
         fn = String.valueOf(idSelectors.get(fieldValue));
     }
 
-    @And("User klik tombol {string}")
-    public void klikButton(String buttonName){
-        Map<String, By> xpathSelectors = new HashMap<>();
-        xpathSelectors.put("create an account", By.xpath("//form/div/div/button/span"));
-        xpathSelectors.put("Sign In", By.xpath("//span[contains(.,'Sign In')]"));
-
-        By selector = xpathSelectors.get(buttonName);
-        driver.findElement(selector).click();
-    }
-
     @Then("Lihat alert")
     public void lihatAlert() {
         String errorMessage = getMessage(driver, ".message-error > div");
