@@ -19,19 +19,6 @@ public class signUp {
         this.driver = bukaBrowser.getDriver();
     }
 
-    @And("Buka halaman {string}")
-    public void halaman(String page) {
-        driver = bukaBrowser.getDriver(); // Inisialisasi driver
-
-        Map<String, By> xpathSelectors = new HashMap<>();
-        xpathSelectors.put("sign up", By.xpath("//a[contains(.,'Create an Account')]"));
-        xpathSelectors.put("login", By.xpath("//a[contains(.,'Sign In')]"));
-
-        By xSelector = xpathSelectors.get(page);
-        WebElement element = driver.findElement(xSelector);
-        element.click();
-    }
-
     String fn;
     @And("User memasukkan {string} dengan {string}")
     public void inputField(String fieldName, String fieldValue) {
