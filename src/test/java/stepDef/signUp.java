@@ -1,40 +1,28 @@
 package stepDef;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import stepDef.General.bukaBrowser;
 
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class signUp {
-    WebDriver driver;
-
-    @Given("Buka browser")
-    public void bukaBrowser() {
-        final String dir = System.getProperty("user.dir");
-        System.out.println("current dir = " + dir);
-        System.setProperty("webdriver.chrome.driver", dir+"/driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        // Set ukuran layar browser
-        Dimension screenSize = new Dimension(1440, 1024); // Ganti sesuai kebutuhan
-        driver.manage().window().setSize(screenSize);
-    }
-
-    @And("Buka web Luma")
-    public void bukaLuma() {
-        driver.get("https://magento.softwaretestingboard.com/"); // Ganti dengan URL yang sesuai
+    private static WebDriver driver;
+    public signUp() {
+        this.driver = bukaBrowser.getDriver();
     }
 
     @And("Buka halaman {string}")
     public void halaman(String page) {
+        driver = bukaBrowser.getDriver(); // Inisialisasi driver
+
         Map<String, By> xpathSelectors = new HashMap<>();
         xpathSelectors.put("sign up", By.xpath("//a[contains(.,'Create an Account')]"));
         xpathSelectors.put("login", By.xpath("//a[contains(.,'Sign In')]"));
@@ -42,8 +30,8 @@ public class signUp {
         By xSelector = xpathSelectors.get(page);
         WebElement element = driver.findElement(xSelector);
         element.click();
-//        driver.findElement(By.xpath("//a[contains(.,'Create an Account')]")).click();
     }
+
     String fn;
     @And("User memasukkan {string} dengan {string}")
     public void inputField(String fieldName, String fieldValue) {
@@ -91,13 +79,16 @@ public class signUp {
     }
 
     // Function untuk ambil text dari message yang muncul
-    public static String getMessage(WebDriver driver, String selector) {
+    public String getMessage(WebDriver driver, String selector) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
+            long waitTimeInSeconds = 10; // Waktu tunggu dalam detik
+            WebDriverWait wait = new WebDriverWait(driver, waitTimeInSeconds);
+
             WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
             return messageElement.getText();
         } catch (Exception e) {
             return null;
         }
     }
+
 }
