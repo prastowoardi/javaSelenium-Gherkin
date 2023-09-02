@@ -19,6 +19,8 @@ public class klikTombol {
         Map<String, By> xpathSelectors = new HashMap<>();
         xpathSelectors.put("create an account", By.xpath("//form/div/div/button/span"));
         xpathSelectors.put("Sign In", By.xpath("//span[contains(.,'Sign In')]"));
+        //xpathSelectors.put("", By.xpath(""));
+        //xpathSelectors.put("", By.xpath(""));
 
         By selector = xpathSelectors.get(buttonName);
         driver.findElement(selector).click();
