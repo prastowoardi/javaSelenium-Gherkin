@@ -15,7 +15,7 @@ public class bukaBrowser {
     @Given("Buka browser")
     public void bukaBrowser() {
         final String dir = System.getProperty("user.dir");
-        System.out.println("current dir = " + dir);
+//        System.out.println("current dir = " + dir);
         System.setProperty("webdriver.chrome.driver", dir+"/driver/chromedriver");
         driver = new ChromeDriver();
         // Set ukuran layar browser

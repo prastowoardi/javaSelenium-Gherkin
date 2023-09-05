@@ -71,5 +71,7 @@ public class visitPage {
         } else {
             System.out.println("Expected URL not found for page: " + pageName);
         }
+
+        driver.quit();
     }
 }
