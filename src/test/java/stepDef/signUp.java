@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import stepDef.General.bukaBrowser;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +60,9 @@ public class signUp {
     public String getMessage(WebDriver driver, String selector) {
         try {
             long waitTimeInSeconds = 10; // Waktu tunggu dalam detik
-            WebDriverWait wait = new WebDriverWait(driver, waitTimeInSeconds);
+            Duration timeoutDuration = Duration.ofSeconds(waitTimeInSeconds); // Konversi ke Duration
+
+            WebDriverWait wait = new WebDriverWait(driver, timeoutDuration);
 
             WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
             return messageElement.getText();
